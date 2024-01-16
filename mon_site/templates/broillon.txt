@@ -1,0 +1,97 @@
+<!--
+{% extends "base.html" %}
+
+{% block title%}Connexion{% endblock %}
+
+{% block bodyId %}loginPage{% endblock %}
+
+{% block content %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    
+    {% if error %}
+    <p class="error">{{ error }}</p>
+    {% endif %}
+
+    <p>
+        <label for="email">Courriel:</label>
+        <input type="email" name="email" id="email" size="30" />
+    </p>
+    <p>
+        <label for="password" >Mot de passe:</label>
+        <input type="password" name="password" id="password" size="30"/>
+
+    </p>
+    <p>
+        <input type="submit" value="Se connecter"/>
+        <a href=" ">Créer un compte</a>
+    </p>
+</form>
+
+
+{% endblock %}
+
+
+-->
+
+
+
+""""
+def login(request):
+    # Teste si formulaire a été envoyé
+    if len(request.POST) > 0:
+        # Teste si les paramètres attendus ont été transmis
+        if 'email' not in request.POST or 'password' not in request.POST:
+            error = "Veuillez entrer une adresse de courriel et un mot de passe."
+            return render(request, 'login.html', {'error': error})
+        else:
+            email = request.POST['email']
+            password = request.POST['password']
+            if password != 'sesame' or email != 'carlittohounkpe@gmail':
+                error = "Adresse courriel ou mot de passe erroné."
+                return render(request, 'login.html', {'error': error})
+            # Tout est bon, on va à la page d'accueil
+            else:
+                return redirect('welcome')
+    else:
+        return render(request, 'login.html')
+"""
+
+
+
+
+
+
+from django.contrib.auth import authenticate,login
+class SuperUser(models.Model):
+    username = models.CharField(max_length=30,unique=True)
+    email = models.EmailField(max_length=60,unique=True)
+    is_superuser = models.BooleanField(default=True)
+    password = models.CharField(max_length=32,blank=True)
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=True)
+
+
+superuser.is_superuser=True
+superuser.is_staff=True
+superuser.is_active=True
+
+superuser.save()
+
+login(request, superuser)
+
+
+
+
+
+
+from django.contrib.auth.models import User
+User.objects.create_superuser(username='Carlos',email='carlittohounkpe@gmail.com',password='superadmin1')
+
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script> 
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 

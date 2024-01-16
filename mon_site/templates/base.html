@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/mon_site/static/css/stytle.css">
+    <link rel="shortcut icon" href="/mon_site/static/img/favicon.ico" type="image/x-icon">
+    <title>Trombinoscoop - {% block title %}Bienvenue{% endblock %}</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+</head>
+<body id="{% block bodyId %}genericPage{% endblock %}">
+    <header>
+        {% block headerContent %}{% endblock %}
+    </header>
+    <section id="content">
+        {% block content %}{% endblock %}
+    </section>
+</body>
+</html>
